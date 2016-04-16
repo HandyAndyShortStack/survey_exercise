@@ -1,0 +1,63 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #453445;
+}
+
+.questions {
+  margin-top: 20px;
+}
+
+.questions > .question:nth-child(odd) {
+  background-color: #e6f1f1;
+}
+
+.questions > .question.selected {
+  background-color: #f4e8eb;
+}
+
+.question {
+  padding-top: 10px;
+}
+
+.number {
+  color: white;
+  background-color: #D9BC8D;
+  margin-left: 10px;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+.text {
+  margin-left: 20px;
+}
+
+.textarea {
+  margin-top: -3px;
+  display: none;
+  margin-left: 17px;
+  outline: none;
+  border: 1px solid #453445;
+}
+
+.textarea:focus {
+  border-color: #94183B;
+}
+
+.delete {
+  font-size: 20px;
+  line-height: 20px;
+  margin-top: -10px;
+  margin-left: auto;
+  padding: 10px;
+}
+
+.question.selected .text {
+  display: none;
+}
+
+.question.selected .textarea {
+  display: block;
+}

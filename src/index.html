@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/flexbox_convenience.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <script src="vendor/jquery-1.12.3.min.js"></script>
+    <script src="vendor/handlebars-v4.0.5.js"></script>
+  </head>
+  <body>
+    <section id="questions" class="container">
+    </section>
+
+    <script id="template-question" type="text/handlebars">
+      <div class="flex-row align-start question">
+        <div class="number">{{index}}</div>
+        <div class="text">{{question.text}}</div>
+        <textarea class="textarea flex-1" rows="3">{{question.text}}</textarea>
+        <div class="delete">
+          <i class="glyphicon glyphicon-remove"></i>
+        </div>
+      </div>
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/models/question.js"></script>
+    <script src="js/models/questions.js"></script>
+  </body>
+</html>
