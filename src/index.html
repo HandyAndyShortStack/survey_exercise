@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="styles/global.css">
     <script src="vendor/jquery-1.12.3.min.js"></script>
     <script src="vendor/handlebars-v4.0.5.js"></script>
+    <script src="vendor/vdom-parser.js"></script>
+    <script src="vendor/virtual-dom.js"></script>
   </head>
   <body>
-    <section id="questions" class="questions container">
+    <section id="questions" class="container">
     </section>
 
     <script id="template-questions" type="text/handlebars">
-      {{#each questions}}
-        {{> question}}
-      {{/each}}
+      <div class="questions">      
+        {{#each questions}}
+          {{> question}}
+        {{/each}}
+      </div>
     </script>
 
     <script id="template-question" type="text/handlebars">

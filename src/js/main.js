@@ -9,7 +9,10 @@ $(function() {
   });
 
   var questionsEl = $('#questions');
-  questionsEl.html(renderHandlebars());
+
+  var tree = vdomParser(renderHandlebars());
+  var rootNode = virtualDom.create(tree);
+  questionsEl.append($(rootNode));
 
   function renderHandlebars() {
     return template({
