@@ -14,7 +14,7 @@
     </section>
 
     <script id="template-questions" type="text/handlebars">
-      <div class="questions">      
+      <div class="questions">
         {{#each questions}}
           {{> question}}
         {{/each}}
@@ -22,7 +22,7 @@
     </script>
 
     <script id="template-question" type="text/handlebars">
-      <div class="flex-row align-start question">
+      <div class="flex-row align-start question" data-index="{{@index}}">
         <div class="question-number">{{inc @index}}</div>
         <textarea class="question-text flex-1" rows="1">{{text}}</textarea>
         <div class="question-delete">
