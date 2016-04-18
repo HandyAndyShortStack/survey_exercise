@@ -51,6 +51,11 @@ body {
   resize: vertical;
 }
 
+.question-text:empty:not(:focus)::after {
+  content: "click to edit question text";
+  color: #7d717d;
+}
+
 .question.selected .question-text:focus {
   border-color: #94183B;
 }
