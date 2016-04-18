@@ -3,12 +3,19 @@ $(function() {
   // setup
 
   var questions = testData;
+  var selectedQuestionIndex = null;
   var currentEvent;
 
   var template = Handlebars.compile($('#template-questions').html());
   Handlebars.registerPartial('question', $('#template-question').html());
   Handlebars.registerHelper('inc', function(value, options) {
     return parseInt(value, 10) + 1;
+  });
+  Handlebars.registerHelper('selectedClass', function(value, options) {
+    if (value === selectedQuestionIndex) {
+      return 'selected';
+    }
+    return '';
   });
 
   var questionsEl = $('#questions');
@@ -19,18 +26,32 @@ $(function() {
 
   // event handlers
 
+  registerFormEvent('body', 'click', function() {
+    selectedQuestionIndex = null;
+  });
+
+  registerFormEvent('.question', 'click', function(event, el) {
+    selectedQuestionIndex = getQuestionIndex(el);
+  });
+
   registerFormEvent('.question-delete', 'click', function(event, el) {
     var questionIndex = getQuestionIndex(el);
     questions.splice(questionIndex, 1);
   });
 
   registerFormEvent('.new-question', 'click', function(event, el) {
+    selectedQuestionIndex = questions.length;
     questions.push({
-      text: 'click to edit',
+      text: '',
       answers: [],
       noneOfTheAbove: false,
       shuffle: false
-    })
+    });
+    setTimeout(function() {
+      $('.question[data-index="' + selectedQuestionIndex + '"]')
+          .find('.question-text')
+          .focus();
+    }, 0);
   });
 
   // functions
@@ -44,12 +65,13 @@ $(function() {
 
   function renderHandlebars() {
     return template({
-      questions: questions
+      questions: questions,
+      selectedQuestionIndex: selectedQuestionIndex
     });
   }
 
   function registerFormEvent(selector, type, handler) {
-    questionsEl.on(type, function(event) {
+    $(document.body).on(type, function(event) {
       var sourceEl = getSourceEl(event, selector);
       if (!sourceEl) {
         return;

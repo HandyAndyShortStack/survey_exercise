@@ -30,9 +30,9 @@
     </script>
 
     <script id="template-question" type="text/handlebars">
-      <div class="flex-row align-start question" data-index="{{@index}}">
+      <div class="flex-row align-start question {{selectedClass @index}}" data-index="{{@index}}">
         <div class="question-number">{{inc @index}}</div>
-        <textarea class="question-text flex-1" rows="1">{{text}}</textarea>
+        <div contenteditable="true" class="question-text flex-1" rows="1">{{text}}</div contenteditable="true">
         <div class="question-delete">
           <i class="glyphicon glyphicon-remove"></i>
         </div>

@@ -31,18 +31,24 @@ body {
 }
 
 .question-text {
-  margin-top: -3px;
+  padding-left: 5px;
   margin-left: 20px;
+  margin-bottom: 10px;
   outline: none;
   background-color: transparent; 
   border: 1px solid transparent;
-  resize: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.question:not(.selected) .question-text {
+  height: auto !important;
 }
 
 .question.selected .question-text {
   border-color: #453445;
   background-color: white;
-  height: 66px;
+  resize: vertical;
 }
 
 .question.selected .question-text:focus {
