@@ -8,20 +8,24 @@
     <script src="vendor/handlebars-v4.0.5.js"></script>
   </head>
   <body>
-    <section id="questions" class="container">
+    <section id="questions" class="questions container">
     </section>
+
+    <script id="template-questions" type="text/handlebars">
+      {{#each questions}}
+        {{> question}}
+      {{/each}}
+    </script>
 
     <script id="template-question" type="text/handlebars">
       <div class="flex-row align-start question">
-        <div class="question-number">{{index}}</div>
-        <textarea class="question-text flex-1" rows="1">{{question.text}}</textarea>
+        <div class="question-number">{{inc @index}}</div>
+        <textarea class="question-text flex-1" rows="1">{{text}}</textarea>
         <div class="question-delete">
           <i class="glyphicon glyphicon-remove"></i>
         </div>
       </div>
     </script>
     <script src="js/main.js"></script>
-    <script src="js/models/question.js"></script>
-    <script src="js/models/questions.js"></script>
   </body>
 </html>
