@@ -22,7 +22,7 @@ body {
   padding-top: 10px;
 }
 
-.number {
+.question-number {
   color: white;
   background-color: #D9BC8D;
   margin-left: 10px;
@@ -30,7 +30,7 @@ body {
   border-radius: 10px;
 }
 
-.text {
+.question-text {
   margin-top: -3px;
   margin-left: 20px;
   outline: none;
@@ -39,17 +39,17 @@ body {
   resize: none;
 }
 
-.question.selected .text {
+.question.selected .question-text {
   border-color: #453445;
   background-color: white;
   height: 66px;
 }
 
-.question.selected .text:focus {
+.question.selected .question-text:focus {
   border-color: #94183B;
 }
 
-.delete {
+.question-delete {
   font-size: 20px;
   line-height: 20px;
   margin-top: -10px;
