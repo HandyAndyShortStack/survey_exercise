@@ -24,6 +24,15 @@ $(function() {
     questions.splice(questionIndex, 1);
   });
 
+  registerFormEvent('.new-question', 'click', function(event, el) {
+    questions.push({
+      text: 'click to edit',
+      answers: [],
+      noneOfTheAbove: false,
+      shuffle: false
+    })
+  });
+
   // functions
 
   function render() {

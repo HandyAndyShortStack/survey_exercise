@@ -56,3 +56,15 @@ body {
   margin-left: auto;
   padding: 10px;
 }
+
+.new-question {
+  margin-top: 5px;
+  padding: 5px 10px;
+  color: white;
+  background-color: #046D70;
+}
+
+.new-question .icon-wrapper {
+  margin-left: 10px;
+  font-size: 20px;
+}
