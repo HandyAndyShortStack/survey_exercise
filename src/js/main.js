@@ -37,6 +37,7 @@ $(function() {
   registerFormEvent('.question-delete', 'click', function(event, el) {
     var questionIndex = getQuestionIndex(el);
     questions.splice(questionIndex, 1);
+    selectedQuestionIndex = null;
   });
 
   registerFormEvent('.new-question', 'click', function(event, el) {
