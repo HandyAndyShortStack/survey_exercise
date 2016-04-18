@@ -1,6 +1,5 @@
 $(function() {
 
-  var questionsEl = $('#questions');
   var questions = testData;
 
   var template = Handlebars.compile($('#template-questions').html());
@@ -9,12 +8,13 @@ $(function() {
     return parseInt(value, 10) + 1;
   });
 
-  render();
+  var questionsEl = $('#questions');
+  questionsEl.html(renderHandlebars());
 
-  function render() {
-    questionsEl.html(template({
+  function renderHandlebars() {
+    return template({
       questions: questions
-    }));
+    });
   }
 });
 
