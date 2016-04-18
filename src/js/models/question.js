@@ -12,9 +12,6 @@
 
     el.on('click', onClick.bind(null, el));
 
-    el.find('.text')
-        .on('click', textClick.bind(null, el));
-
     return {
       data: data,
       index: index,
@@ -26,12 +23,6 @@
     $('.question').removeClass('selected');
     el.addClass('selected');
     event.originalEvent.questionSelect = true;
-  }
-
-  function textClick(el, event) {
-    setTimeout(function() {
-      el.find('.textarea').focus();
-    }, 0);
   }
 
   $('body').on('click', function(event) {

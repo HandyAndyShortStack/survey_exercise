@@ -31,18 +31,21 @@ body {
 }
 
 .text {
-  margin-left: 20px;
-}
-
-.textarea {
   margin-top: -3px;
-  display: none;
-  margin-left: 17px;
+  margin-left: 20px;
   outline: none;
-  border: 1px solid #453445;
+  background-color: transparent; 
+  border: 1px solid transparent;
+  resize: none;
 }
 
-.textarea:focus {
+.question.selected .text {
+  border-color: #453445;
+  background-color: white;
+  height: 66px;
+}
+
+.question.selected .text:focus {
   border-color: #94183B;
 }
 
@@ -52,12 +55,4 @@ body {
   margin-top: -10px;
   margin-left: auto;
   padding: 10px;
-}
-
-.question.selected .text {
-  display: none;
-}
-
-.question.selected .textarea {
-  display: block;
 }
