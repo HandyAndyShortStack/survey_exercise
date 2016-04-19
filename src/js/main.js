@@ -33,7 +33,7 @@ $(function() {
     selectedQuestionIndex = null;
   });
 
-  registerFormEvent('.new-question', 'click', function(event, el) {
+  registerFormEvent('.new-question', 'mousedown', function(event, el) {
     selectedQuestionIndex = questions.length;
     questions.push({
       text: '',
