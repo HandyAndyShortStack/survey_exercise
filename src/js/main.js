@@ -69,7 +69,13 @@ $(function() {
   });
 
   registerFormEvent('.none-of-the-above', 'click', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    questions[questionIndex].noneOfTheAbove = !questions[questionIndex].noneOfTheAbove;
+  });
 
+  registerFormEvent('.shuffle', 'click', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    questions[questionIndex].shuffle = !questions[questionIndex].shuffle;
   });
 
   // functions
