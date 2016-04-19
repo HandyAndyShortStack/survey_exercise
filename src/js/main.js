@@ -62,6 +62,12 @@ console.log(renderHandlebars());
     selectedQuestionIndex = getQuestionIndex(el);
   });
 
+  registerFormEvent('.option-type', 'click', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    var answerIndex = getAnswerIndex(el);
+    questions[questionIndex].answers[answerIndex].optionType = $(el).html();
+  });
+
   // functions
 
   function render() {
@@ -104,6 +110,10 @@ console.log(renderHandlebars());
 
   function getQuestionIndex(el) {
     return parseInt($(el).closest('.question').data('index'), 10);
+  }
+
+  function getAnswerIndex(el) {
+    return parseInt($(el).closest('.answer').data('index'), 10);
   }
 
   function registerHandlebarsHelpers() {

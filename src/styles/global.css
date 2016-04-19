@@ -132,6 +132,7 @@ body {
 
 .answer-text textarea {
   margin-top: 5px;
+  min-width: 200px;
 }
 
 .answer-text textarea:focus {
