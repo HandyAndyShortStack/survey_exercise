@@ -164,6 +164,11 @@ body {
   border-color: #453445;
 }
 
+.option-type:not(.selected):hover, .question-control:not(.selected):hover {
+  border-color: rgb(148, 24, 59);
+  border-color: rgba(148, 24, 59, 0.5);
+}
+
 .options-controls {
   padding-bottom: 10px;
 }
