@@ -51,7 +51,6 @@ $(function() {
   registerFormEvent('.question .text-placeholder', 'mousedown', function(event, el) {
     selectedQuestionIndex = getQuestionIndex(el);
     setTimeout(function() {
-      console.log('foo')
       $('.question[data-index="' + selectedQuestionIndex + '"]')
           .find('.question-text textarea')
           .focus();
@@ -68,6 +67,22 @@ $(function() {
     questions[questionIndex].answers[answerIndex].optionType = $(el).html();
   });
 
+  registerFormEvent('.new-option', 'click', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    var answers = questions[questionIndex].answers;
+    var answerIndex = answers.length;
+    answers.push({
+      text: '',
+      optionType: 'May Select'
+    });
+    setTimeout(function() {
+      $('.question[data-index="' + questionIndex + '"]')
+          .find('.answer[data-index="' + answerIndex + '"]')
+          .find('.answer-text textarea')
+          .focus();
+    }, 5);
+  });
+
   registerFormEvent('.none-of-the-above', 'click', function(event, el) {
     var questionIndex = getQuestionIndex(el);
     questions[questionIndex].noneOfTheAbove = !questions[questionIndex].noneOfTheAbove;
@@ -80,7 +95,7 @@ $(function() {
 
   // functions
 
-  function render() {
+  function render(callback) {
     var newTree = vdomParser(renderHandlebars());
     var patches = virtualDom.diff(tree, newTree);
     rootNode = virtualDom.patch(rootNode, patches);
