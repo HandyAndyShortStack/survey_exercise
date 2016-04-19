@@ -48,9 +48,10 @@ $(function() {
     }, 0);
   });
 
-  registerFormEvent('.question-text-placeholder', 'mousedown', function(event, el) {
+  registerFormEvent('.question .text-placeholder', 'mousedown', function(event, el) {
     selectedQuestionIndex = getQuestionIndex(el);
     setTimeout(function() {
+      console.log('foo')
       $('.question[data-index="' + selectedQuestionIndex + '"]')
           .find('.question-text textarea')
           .focus();
@@ -68,7 +69,7 @@ $(function() {
   });
 
   registerFormEvent('.none-of-the-above', 'click', function(event, el) {
-    
+
   });
 
   // functions
