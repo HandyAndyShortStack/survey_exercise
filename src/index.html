@@ -34,7 +34,7 @@
         <div class="flex-row align-start">
           <div class="question-number">{{inc @index}}</div>
           <div class="question-text flex-1 flex-row">
-            <div class="question-text-placeholder">
+            <div class="text-placeholder">
               <p>click to edit question text</p>
             </div>
             <textarea class="flex-1" rows="1" required="true">{{text}}</textarea>
@@ -43,8 +43,37 @@
             <i class="glyphicon glyphicon-remove"></i>
           </div>
         </div>
+        <div class="options">
+          <div class="options-heading">Recruited Respondent Options:</div>
+          <div class="answers">          
+            {{#each answers}}
+              {{> answer}}
+            {{/each}}
+          </div>
+        </div>
       </div>
     </script>
+
+    <script id="template-answer" type="text/handlebars">
+      <div class="answer" data-index="{{@index}}">
+        <div class="flex-row justify-space-between">
+          <div class="answer-text flex-1">
+            <div class="text-placeholder">
+              <p>click to edit option text</p>
+            </div>
+            <textarea required="true" rows="1">{{text}}</textarea>
+          </div>
+          <div class="option-types flex-row align-start">
+            <div class="option-type {{optionSelectedClass optionType 'May Select'}}">May Select</div>
+            <div>|</div>
+            <div class="option-type {{optionSelectedClass optionType 'Must Select'}}">Must Select</div>
+            <div>|</div>
+            <div class="option-type {{optionSelectedClass optionType 'Terminate if Select'}}">Terminate if Select</div>
+          </div>
+        </div>
+      </div>
+    </script>
+
     <script src="js/main.js"></script>
   </body>
 </html>

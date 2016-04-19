@@ -8,29 +8,23 @@ $(function() {
 
   var template = Handlebars.compile($('#template-questions').html());
   Handlebars.registerPartial('question', $('#template-question').html());
-  Handlebars.registerHelper('inc', function(value, options) {
-    return parseInt(value, 10) + 1;
-  });
-  Handlebars.registerHelper('selectedClass', function(value, options) {
-    if (value === selectedQuestionIndex) {
-      return 'selected';
-    }
-    return '';
-  });
+  Handlebars.registerPartial('answer', $('#template-answer').html());
+  registerHandlebarsHelpers();
 
   var questionsEl = $('#questions');
 
+console.log(renderHandlebars());
   var tree = vdomParser(renderHandlebars());
   var rootNode = virtualDom.create(tree);
   questionsEl.append($(rootNode));
 
   // event handlers
 
-  registerFormEvent('body', 'click', function() {
+  registerFormEvent('body', 'mousedown', function() {
     selectedQuestionIndex = null;
   });
 
-  registerFormEvent('.question', 'mousedown mouseup click', function(event, el) {
+  registerFormEvent('.question', 'mousedown', function(event, el) {
     selectedQuestionIndex = getQuestionIndex(el);
   });
 
@@ -55,7 +49,7 @@ $(function() {
     }, 0);
   });
 
-  registerFormEvent('.question-text-placeholder', 'mousedown mouseup click', function(event, el) {
+  registerFormEvent('.question-text-placeholder', 'mousedown', function(event, el) {
     selectedQuestionIndex = getQuestionIndex(el);
     setTimeout(function() {
       $('.question[data-index="' + selectedQuestionIndex + '"]')
@@ -111,6 +105,23 @@ $(function() {
   function getQuestionIndex(el) {
     return parseInt($(el).closest('.question').data('index'), 10);
   }
+
+  function registerHandlebarsHelpers() {
+
+    // Handlebars helpers
+
+    Handlebars.registerHelper('inc', function(value, options) {
+      return parseInt(value, 10) + 1;
+    });
+
+    Handlebars.registerHelper('selectedClass', function(value, options) {
+      return value === selectedQuestionIndex ? 'selected' : '';
+    });
+
+    Handlebars.registerHelper('optionSelectedClass', function(value, optionType, options) {
+      return value === optionType ? 'selected' : '';
+    });
+  }
 });
 
 var testData = [
@@ -118,9 +129,17 @@ var testData = [
     text: 'what color is your underwear?',
     answers: [
       {
-        text: 'green',
+        text: 'red',
+        optionType: 'May Select'
+      },
+      {
+        text: 'yellow',
         optionType: 'Must Select'
       },
+      {
+        text: 'brown',
+        optionType: 'Terminate if Select'
+      }
     ],
     noneOfTheAbove: true,
     shuffle: true
@@ -131,7 +150,7 @@ var testData = [
       {
         text: 'green',
         optionType: 'Must Select'
-      },
+      }
     ],
     noneOfTheAbove: true,
     shuffle: true
@@ -142,7 +161,7 @@ var testData = [
       {
         text: 'green',
         optionType: 'Must Select'
-      },
+      }
     ],
     noneOfTheAbove: true,
     shuffle: true
@@ -153,7 +172,7 @@ var testData = [
       {
         text: 'green',
         optionType: 'Must Select'
-      },
+      }
     ],
     noneOfTheAbove: true,
     shuffle: true
