@@ -8,6 +8,7 @@ $(function() {
 
   var template = Handlebars.compile($('#template-questions').html());
   Handlebars.registerPartial('question', $('#template-question').html());
+  Handlebars.registerPartial('options', $('#template-options').html());
   Handlebars.registerPartial('answer', $('#template-answer').html());
   registerHandlebarsHelpers();
 

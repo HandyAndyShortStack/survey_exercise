@@ -43,24 +43,28 @@
             <i class="glyphicon glyphicon-remove"></i>
           </div>
         </div>
-        <div class="options">
-          <div class="options-heading">Recruited Respondent Options:</div>
-          <div class="answers">          
-            {{#each answers}}
-              {{> answer}}
-            {{/each}}
-          </div>
-          <div class="options-controls flex-row justify-center align-center">
-            <div class="new-option flex-row align-center">
-              <div>New Option</div>
-              <div class="icon-wrapper">
-                <i class="glyphicon glyphicon-plus"></i>
-              </div>
+        {{> options}}
+      </div>
+    </script>
+
+    <script id="template-options" type="text/handlebars">
+      <div class="options">
+        <div class="options-heading">Recruited Respondent Options:</div>
+        <div class="answers">          
+          {{#each answers}}
+            {{> answer}}
+          {{/each}}
+        </div>
+        <div class="options-controls flex-row justify-center align-center">
+          <div class="new-option flex-row align-center">
+            <div>New Option</div>
+            <div class="icon-wrapper">
+              <i class="glyphicon glyphicon-plus"></i>
             </div>
-            <div class="question-control none-of-the-above {{booleanSelectedClass noneOfTheAbove}}">Allow "None of the Above"</div>
-            <div>|</div>
-            <div class="question-control shuffle {{booleanSelectedClass shuffle}}">Shuffle option order</div>
           </div>
+          <div class="question-control none-of-the-above {{booleanSelectedClass noneOfTheAbove}}">Allow "None of the Above"</div>
+          <div>|</div>
+          <div class="question-control shuffle {{booleanSelectedClass shuffle}}">Shuffle option order</div>
         </div>
       </div>
     </script>
