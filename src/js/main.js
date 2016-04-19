@@ -67,6 +67,12 @@ $(function() {
     questions[questionIndex].answers[answerIndex].optionType = $(el).html();
   });
 
+  registerFormEvent('.answer-delete', 'click', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    var answerIndex = getAnswerIndex(el);
+    questions[questionIndex].answers.splice(answerIndex, 1);
+  });
+
   registerFormEvent('.new-option', 'click', function(event, el) {
     var questionIndex = getQuestionIndex(el);
     var answers = questions[questionIndex].answers;
