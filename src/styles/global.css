@@ -122,12 +122,17 @@ body {
 }
 
 .options {
-  padding: 0 54px;
+  padding: 10px 54px;
+}
+
+.question:not(.selected) .options {
+  display: none;
 }
 
 .options-heading {
   color: #7d717d;
   font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .answers {
@@ -191,10 +196,6 @@ body {
 .option-type:not(.selected):hover, .question-control:not(.selected):hover {
   border-color: rgb(148, 24, 59);
   border-color: rgba(148, 24, 59, 0.5);
-}
-
-.options-controls {
-  padding-bottom: 10px;
 }
 
 .new-option {
