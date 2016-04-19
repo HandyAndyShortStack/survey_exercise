@@ -30,7 +30,7 @@ $(function() {
     selectedQuestionIndex = null;
   });
 
-  registerFormEvent('.question', 'click', function(event, el) {
+  registerFormEvent('.question', 'mousedown mouseup click', function(event, el) {
     selectedQuestionIndex = getQuestionIndex(el);
   });
 
@@ -50,9 +50,22 @@ $(function() {
     });
     setTimeout(function() {
       $('.question[data-index="' + selectedQuestionIndex + '"]')
-          .find('.question-text')
+          .find('.question-text textarea')
           .focus();
     }, 0);
+  });
+
+  registerFormEvent('.question-text-placeholder', 'mousedown mouseup click', function(event, el) {
+    selectedQuestionIndex = getQuestionIndex(el);
+    setTimeout(function() {
+      $('.question[data-index="' + selectedQuestionIndex + '"]')
+          .find('.question-text textarea')
+          .focus();
+    }, 0);
+  });
+
+  registerFormEvent('.question-text textarea', 'focus', function(event, el) {
+    selectedQuestionIndex = getQuestionIndex(el);
   });
 
   // functions

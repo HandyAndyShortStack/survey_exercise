@@ -30,11 +30,18 @@
     </script>
 
     <script id="template-question" type="text/handlebars">
-      <div class="flex-row align-start question {{selectedClass @index}}" data-index="{{@index}}">
-        <div class="question-number">{{inc @index}}</div>
-        <div contenteditable="true" class="question-text flex-1" rows="1">{{text}}</div contenteditable="true">
-        <div class="question-delete">
-          <i class="glyphicon glyphicon-remove"></i>
+      <div class="question {{selectedClass @index}}" data-index="{{@index}}">
+        <div class="flex-row align-start">
+          <div class="question-number">{{inc @index}}</div>
+          <div class="question-text flex-1 flex-row">
+            <div class="question-text-placeholder">
+              <p>click to edit question text</p>
+            </div>
+            <textarea class="flex-1" rows="1" required="true">{{text}}</textarea>
+          </div>
+          <div class="question-delete">
+            <i class="glyphicon glyphicon-remove"></i>
+          </div>
         </div>
       </div>
     </script>
