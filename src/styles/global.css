@@ -118,6 +118,10 @@ body {
   font-size: 15px;
 }
 
+.answers {
+  padding-bottom: 10px;
+}
+
 .answers > .answer:nth-child(odd) {
   background-color: white;
 }
@@ -150,12 +154,26 @@ body {
   padding-top: 7px;
 }
 
-.option-type {
+.option-type, .question-control {
   border: 1px solid transparent;
   margin: 0 5px;
   padding: 0 5px;
 }
 
-.option-type.selected {
+.option-type.selected, .question-control.selected {
   border-color: #453445;
+}
+
+.options-controls {
+  padding-bottom: 10px;
+}
+
+.new-option {
+  color: white;
+  background-color: #046D70;
+  padding: 2px 7px;
+}
+
+.new-option .icon-wrapper {
+  margin-left: 5px;
 }

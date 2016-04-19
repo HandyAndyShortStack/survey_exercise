@@ -13,7 +13,6 @@ $(function() {
 
   var questionsEl = $('#questions');
 
-console.log(renderHandlebars());
   var tree = vdomParser(renderHandlebars());
   var rootNode = virtualDom.create(tree);
   questionsEl.append($(rootNode));
@@ -66,6 +65,10 @@ console.log(renderHandlebars());
     var questionIndex = getQuestionIndex(el);
     var answerIndex = getAnswerIndex(el);
     questions[questionIndex].answers[answerIndex].optionType = $(el).html();
+  });
+
+  registerFormEvent('.none-of-the-above', 'click', function(event, el) {
+    
   });
 
   // functions
@@ -130,6 +133,10 @@ console.log(renderHandlebars());
 
     Handlebars.registerHelper('optionSelectedClass', function(value, optionType, options) {
       return value === optionType ? 'selected' : '';
+    });
+
+    Handlebars.registerHelper('booleanSelectedClass', function(value, options) {
+      return value ? 'selected' : '';
     });
   }
 });

@@ -50,6 +50,17 @@
               {{> answer}}
             {{/each}}
           </div>
+          <div class="options-controls flex-row justify-center align-center">
+            <div class="new-option flex-row align-center">
+              <div>New Option</div>
+              <div class="icon-wrapper">
+                <i class="glyphicon glyphicon-plus"></i>
+              </div>
+            </div>
+            <div class="question-control none-of-the-above {{booleanSelectedClass noneOfTheAbove}}">Allow "None of the Above"</div>
+            <div>|</div>
+            <div class="question-control shuffle {{booleanSelectedClass shuffle}}">Shuffle option order</div>
+          </div>
         </div>
       </div>
     </script>
