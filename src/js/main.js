@@ -101,6 +101,11 @@ $(function() {
     questions[questionIndex].shuffle = !questions[questionIndex].shuffle;
   });
 
+  registerFormEvent('.question-text textarea', 'keyup', function(event, el) {
+    var questionIndex = getQuestionIndex(el);
+    questions[questionIndex].text = $(el).val();
+  });
+
   registerFormEvent('.question-drag-handle', 'dragstart', function(event, el) {
     selectedQuestionIndex = null;
     var questionIndex = getQuestionIndex(el);
