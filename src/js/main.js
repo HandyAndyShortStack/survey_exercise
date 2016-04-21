@@ -19,6 +19,11 @@ $(function() {
   var rootNode = virtualDom.create(tree);
   questionsEl.append($(rootNode));
 
+  // console hooks
+
+  window.questions = questions;
+  window.render = render;
+
   // event handlers
 
   registerFormEvent('body', 'mousedown', function() {
@@ -102,9 +107,16 @@ $(function() {
   });
 
   registerFormEvent('.question-text textarea', 'keyup', function(event, el) {
+    var question = questions[getQuestionIndex(el)];
+    question.text = $(el).val();
+  }, true);
+
+  registerFormEvent('.answer-text textarea', 'keyup', function(event, el) {
     var questionIndex = getQuestionIndex(el);
-    questions[questionIndex].text = $(el).val();
-  });
+    var answerIndex = getAnswerIndex(el);
+    var answer = questions[questionIndex].answers[answerIndex];
+    answer.text = $(el).val();
+  }, true);
 
   registerFormEvent('.question-drag-handle', 'dragstart', function(event, el) {
     selectedQuestionIndex = null;
@@ -158,7 +170,7 @@ $(function() {
     });
   }
 
-  function registerFormEvent(selector, type, handler) {
+  function registerFormEvent(selector, type, handler, suppressRender) {
     $(document.body).on(type, function(event) {
       var sourceEl = getSourceEl(event, selector);
       if (!sourceEl) {
@@ -166,7 +178,9 @@ $(function() {
       }
       handler(event, sourceEl);
       if (currentEvent !== event.originalEvent) {
-        setTimeout(render, 0);
+        if (!suppressRender) {
+          setTimeout(render, 0);
+        }
         currentEvent = event.originalEvent;
       }
     });

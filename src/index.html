@@ -10,8 +10,7 @@
     <script src="vendor/virtual-dom.js"></script>
   </head>
   <body>
-    <section id="questions" class="container">
-    </section>
+    <section id="questions" class="container"></section>
 
     <script id="template-questions" type="text/handlebars">
       <div class="questions">
@@ -79,7 +78,7 @@
             <div class="text-placeholder">
               <p>click to edit option text</p>
             </div>
-            <textarea required="true" rows="1">{{text}}</textarea>
+            <textarea required="true" rows="1" value="{{text}}"></textarea>
           </div>
           <div class="option-types flex-row align-start">
             <div class="option-type {{optionSelectedClass optionType 'May Select'}}">May Select</div>

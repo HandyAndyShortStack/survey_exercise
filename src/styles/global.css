@@ -44,6 +44,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   resize: none;
+  white-space: normal;
 }
 
 .question-text textarea { 
