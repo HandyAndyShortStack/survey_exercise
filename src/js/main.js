@@ -124,6 +124,7 @@ $(function() {
     draggedQuestionIndex = questionIndex;
     var questionEl = $('.question[data-index="' + questionIndex + '"]');
     questionEl.removeClass('selected');
+    event.originalEvent.dataTransfer.setData('text/html', questionEl[0]);
     event.originalEvent.dataTransfer.setDragImage(questionEl[0], 20, 20);
   });
 
