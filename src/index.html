@@ -32,6 +32,9 @@
     <script id="template-question" type="text/handlebars">
       <div class="question {{selectedClass @index}}" data-index="{{@index}}">
         <div class="flex-row align-start">
+          <div class="question-drag-handle" draggable="true">
+            <i class="glyphicon glyphicon-move"></i>
+          </div>
           <div class="question-number">{{inc @index}}</div>
           <div class="question-text flex-1 flex-row">
             <div class="text-placeholder">

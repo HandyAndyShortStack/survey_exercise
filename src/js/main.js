@@ -4,6 +4,7 @@ $(function() {
 
   var questions = testData;
   var selectedQuestionIndex = null;
+  var draggedQuestionIndex = null;
   var currentEvent;
 
   var template = Handlebars.compile($('#template-questions').html());
@@ -98,6 +99,42 @@ $(function() {
   registerFormEvent('.shuffle', 'click', function(event, el) {
     var questionIndex = getQuestionIndex(el);
     questions[questionIndex].shuffle = !questions[questionIndex].shuffle;
+  });
+
+  registerFormEvent('.question-drag-handle', 'dragstart', function(event, el) {
+    selectedQuestionIndex = null;
+    var questionIndex = getQuestionIndex(el);
+    draggedQuestionIndex = questionIndex;
+    var questionEl = $('.question[data-index="' + questionIndex + '"]');
+    questionEl.removeClass('selected');
+    event.originalEvent.dataTransfer.setDragImage(questionEl[0], 20, 20);
+  });
+
+  registerFormEvent('.question', 'dragenter', function(event, el) {
+    $('.question').removeClass('drag-over');
+    var questionIndex = getQuestionIndex(el);
+    var questionEl = $('.question[data-index="' + questionIndex + '"]');
+    questionEl.addClass('drag-over');
+  });
+
+  $(document.body).on('dragenter', function(event) {
+    if (!getSourceEl(event, '.question')) {
+      $('.question').removeClass('drag-over');
+    }
+  });
+
+  $(document.body).on('dragend', function(event) {
+    var targetQuestionEl = $('.question.drag-over')[0];
+    if (draggedQuestionIndex !== null && targetQuestionEl) {
+      targetQuestionIndex = getQuestionIndex(targetQuestionEl);
+      var question = questions.splice(draggedQuestionIndex, 1)[0];
+      questions.splice(targetQuestionIndex, 0, question);
+      setTimeout(function() {
+        render();
+      }, 0);
+    }
+    $('.question').removeClass('drag-over');
+    draggedQuestionIndex = null;
   });
 
   // functions
