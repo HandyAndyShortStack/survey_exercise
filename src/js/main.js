@@ -2,7 +2,7 @@ $(function() {
 
   // setup
 
-  var questions = testData;
+  var questions = [];
   var selectedQuestionIndex = null;
   var draggedQuestionIndex = null;
   var currentEvent;
