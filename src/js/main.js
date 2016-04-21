@@ -187,13 +187,8 @@ $(function() {
   }
 
   function getSourceEl(event, selector) {
-    var path = event.originalEvent.path;
-    for (var i = 0; i < path.length; i += 1) {
-      if ($(path[i]).is(selector)) {
-        return path[i];
-      }
-    }
-    return false;
+    var el = $(event.target).closest(selector)[0];
+    return el ? el : false;
   }
 
   function getQuestionIndex(el) {
